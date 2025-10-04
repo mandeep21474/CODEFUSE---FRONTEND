@@ -1,0 +1,620 @@
+.chatbot{
+    /* background-color: #1e1e1e; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 20px;
+    height: 100vh;
+    width: 5%;
+    box-sizing: border-box; 
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.chatbot:hover{
+    transition: all 0.3s ease;
+}
+
+.chatbot-open{
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 20px;
+    height: 100vh;
+    width: 35%;
+    box-sizing: border-box; 
+    transition: all 0.3s ease;
+    position: fixed;
+    right: 0;
+    top: 0;
+    border-left: 2px solid #4a90e2;
+}
+
+.icons{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.icons:hover{
+    color: #fff;
+}
+
+.arrow-icon{
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #1e1e1e;
+    transition: all 0.3s ease;
+    
+}
+
+.arrow-icon:hover{
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+.close-icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.close-icon:hover {
+    color: #ff6b6b;
+}
+
+/* Gemini Logo Animation Styles */
+.gemini-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+.gemini-logo-animated {
+    font-size: 80px;
+    color: #4a90e2;
+    animation: logoAnimation 2s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.welcome-text {
+    font-size: 18px;
+    text-align: center;
+    opacity: 0;
+    animation: textFadeIn 1s ease-in-out 0.5s forwards;
+}
+
+/* Chat Interface Styles */
+.chat-interface {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    animation: chatFadeIn 0.5s ease-in-out;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.gemini-icon-small {
+    font-size: 24px;
+    color: #4a90e2;
+    margin-right: 10px;
+}
+
+.chat-header span {
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.messages-area {
+    flex-grow: 1;
+    overflow-y: auto ;
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    contain: layout; 
+    will-change: scroll-position; 
+}
+
+.welcome-message {
+    background-color: #2a2a2a;
+    padding: 15px;
+    padding-left: 22px;
+    border-radius: 10px;
+    border-left: 3px solid #4a90e2;
+    margin-bottom: 25px;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+
+}
+
+.user-message {
+    background-color: #2a2a2a;
+    padding: 15px;
+    padding-left: 22px;
+    border-radius: 10px;
+    border-right: 3px solid #2a2a2a;
+    margin-bottom: 25px;      
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+      
+}
+.user-message p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.welcome-message p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.loading-icon{
+    font-size: 24px;
+    color: #4a90e2;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.input-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background-color: #2a2a2a;
+    border-radius: 25px;
+    border: 1px solid #333;
+}
+
+.chat-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.chat-input::placeholder {
+    color: #888;
+}
+
+.send-icon {
+    font-size: 20px;
+    color: #4a90e2;
+    cursor: pointer;
+    transform: translateY(-2px);
+    transition: color 0.4s ease;
+    
+}
+
+
+.send-icon:hover {
+    color: #6bb6ff;
+    
+}
+
+/* Animations */
+@keyframes logoAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+@keyframes textFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes chatFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.message-content pre {
+    background: #2d2d2d;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+  
+  .message-content code {
+    background: rgba(27,31,35,.05);
+    padding: .2em .4em;
+    border-radius: 3px;
+  }
+  
+  .message-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  
+  .message-content th,
+  .message-content td {
+    border: 1px solid #444;
+    padding: 0.5rem;
+  }
+  
+  .message-content th {
+    background: #333;
+  }
+  
+
+  /* Responsive Design */
+@media (max-width: 1200px) {
+    .chatbot {
+        width: 6%;
+    }
+
+    .chatbot-open {
+        width: 40%;
+    }
+
+    .arrow-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .gemini-logo-animated {
+        font-size: 70px;
+    }
+
+    .welcome-text {
+        font-size: 17px;
+    }
+
+    .chat-input {
+        font-size: 13px;
+    }
+
+    .input-area {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .chatbot {
+        width: 8%;
+        padding: 15px;
+    }
+
+    .chatbot-open {
+        width: 50%;
+        padding: 15px;
+    }
+
+    .arrow-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .close-icon {
+        font-size: 22px;
+    }
+
+    .gemini-logo-animated {
+        font-size: 60px;
+    }
+
+    .welcome-text {
+        font-size: 16px;
+    }
+
+    .chat-interface {
+        height: 88vh;
+    }
+
+    .gemini-logo-container {
+        height: 65vh;
+    }
+
+    .messages-area {
+        margin-bottom: 15px;
+    }
+
+    .welcome-message,
+    .user-message {
+        padding: 12px;
+        padding-left: 18px;
+        margin-bottom: 20px;
+    }
+
+    .input-area {
+        padding: 12px;
+        border-radius: 20px;
+        position: fixed;
+        bottom: 30px;
+        width: 80vw;
+    }
+
+    .chat-input {
+        font-size: 13px;
+    }
+
+    .send-icon {
+        font-size: 18px;
+    }
+
+    .icons {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 640px) {
+    .chatbot {
+        width: 10%;
+        padding: 12px;
+    }
+
+    .chatbot-open {
+        width: 65%;
+        padding: 12px;
+    }
+
+    .arrow-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .close-icon {
+        font-size: 20px;
+    }
+
+    .gemini-logo-animated {
+        font-size: 50px;
+    }
+
+    .welcome-text {
+        font-size: 15px;
+    }
+
+    .chat-interface {
+        height: 86vh;
+    }
+
+    .gemini-logo-container {
+        height: 60vh;
+    }
+
+    .chat-header {
+        padding: 12px 0;
+        margin-bottom: 15px;
+    }
+
+    .gemini-icon-small {
+        font-size: 22px;
+    }
+
+    .chat-header span {
+        font-size: 15px;
+    }
+
+    .messages-area {
+        padding: 8px 0;
+        margin-bottom: 12px;
+    }
+
+    .welcome-message,
+    .user-message {
+        padding: 10px;
+        padding-left: 15px;
+        margin-bottom: 18px;
+    }
+
+    .welcome-message p,
+    .user-message p {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+
+    .input-area {
+        padding: 10px;
+        gap: 8px;
+        border-radius: 18px;
+        position: fixed;
+        bottom: 30px;
+        width: 80vw;
+    }
+
+    .chat-input {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .send-icon {
+        font-size: 16px;
+    }
+
+    .loading-icon {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chatbot {
+        width: 12%;
+        padding: 8px;
+    }
+
+    .chatbot-open {
+        width: 85%;
+        padding: 8px;
+    }
+
+    .arrow-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .close-icon {
+        font-size: 18px;
+    }
+
+    .gemini-logo-animated {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    .welcome-text {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .chat-interface {
+        height: 84vh;
+    }
+
+    .gemini-logo-container {
+        height: 55vh;
+    }
+
+    .chat-header {
+        padding: 10px 0;
+        margin-bottom: 12px;
+    }
+
+    .gemini-icon-small {
+        font-size: 20px;
+        margin-right: 8px;
+    }
+
+    .chat-header span {
+        font-size: 14px;
+    }
+
+    .messages-area {
+        padding: 6px 0;
+        margin-bottom: 10px;
+    }
+
+    .welcome-message,
+    .user-message {
+        padding: 8px;
+        padding-left: 12px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+
+    .welcome-message p,
+    .user-message p {
+        font-size: 12px;
+        line-height: 1.2;
+    }
+
+    .input-area {
+        padding: 8px;
+        gap: 6px;
+        border-radius: 15px;
+        position: fixed;
+        bottom: 30px;
+        width: 80vw;
+    }
+
+    .chat-input {
+        font-size: 11px;
+        padding: 3px;
+    }
+
+    .send-icon {
+        font-size: 14px;
+    }
+
+    .loading-icon {
+        font-size: 18px;
+    }
+
+    .message-content pre {
+        padding: 0.5rem;
+        font-size: 11px;
+    }
+
+    .message-content th,
+    .message-content td {
+        padding: 0.3rem;
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,422 @@
+
+
+.editor-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pro-tag{
+    color: #000000;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    position: relative;
+    bottom: 0.2rem;
+  
+    letter-spacing: 1px;
+    background-color: #00ff88;
+    border: 1px solid #00ff88;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    
+    
+}
+
+
+
+
+
+.editor-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradien  t(circle at 20% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+.editor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.editor-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.room-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.room-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.room-id-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.plan-btn-container{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;    
+
+}
+.plan-btn{
+  
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.plan-btn:hover{
+    color: black;
+    background-color: #ffffff;
+}
+.connected-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+}
+
+/* Static status indicator */
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #00ff88;
+    border-radius: 50%;
+}
+
+/* Main Content Area */
+.editor-content {
+    flex: 1;
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+}
+
+/* Users Sidebar - solid background */
+.users {
+    width: 280px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: fit-content;
+    max-height: calc(100vh - 200px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.users h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.users h3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #ffffff;
+    margin: 0.75rem auto 0;
+}
+
+/* Client List */
+.clientlist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 0.5rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.clientlist::-webkit-scrollbar {
+    width: 6px;
+}
+
+.clientlist::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.clientlist::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+/* Simplified Action Editor-buttons */
+.Editor-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.Editor-btn {
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.Editor-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.Editor-btn:active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Primary button styling */
+.Editor-btn.primary {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.Editor-btn.primary:hover {
+    background: #f0f0f0;
+    border-color: #f0f0f0;
+}
+
+/* Editor Area - solid background */
+.editor_area {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    margin-right: 120px;
+}
+
+/* Chatbot Container */
+.chatbot-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 999;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Loading States - no blur */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: 20px;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top: 3px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+
+    .editor-content {
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .users {
+        width: 250px;
+        padding: 1.5rem;
+    }
+    .editor_area {
+        margin-right: 80px;
+    }
+}
+
+@media (max-width: 968px) {
+    .editor-page {
+        flex-direction: column;
+    }
+    .editor-header {
+        padding: 1rem 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .room-title {
+        font-size: 1.25rem;
+    }
+    .editor-content {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .users {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        max-height: 300px;
+    }
+    .clientlist {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.75rem;
+    }
+    .Editor-buttons {
+        flex-direction: row;
+        gap: 0.75rem;
+    }
+    .editor_area {
+        margin-right: 0;
+        height: 60vh;
+        min-height: 500px;
+    }
+    .chatbot-container {
+        position: relative;
+        height: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .editor-header {
+        padding: 1rem;
+        text-align: center;
+    }
+    .room-info {
+        /* flex-direction: column; */
+        gap: 1rem;
+    }
+    .users {
+        padding: 1rem;
+    }
+    .clientlist {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+    .Editor-buttons {
+        flex-direction: column;
+    }
+    .Editor-btn {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Focus states */
+.Editor-btn:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 2px;
+}
+
+/* Simplified scrollbars */
+.editor-page ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.editor-page ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.editor-page ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.editor-page ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Toast override - no blur */
+.editor-page .react-hot-toast {
+    background: rgba(0, 0, 0, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 16px !important;
+}

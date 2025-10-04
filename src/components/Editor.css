@@ -1,0 +1,549 @@
+
+
+.editor-component {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    background: rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+
+.editor-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 10;
+}
+
+.editor-controls::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.control-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.labels {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #b0b0b0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.lang_selector,
+.theme_selector {
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    min-width: 140px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    padding-right: 2.5rem;
+}
+
+.lang_selector:focus,
+.theme_selector:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.lang_selector:hover,
+.theme_selector:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.lang_selector option,
+.theme_selector option {
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 0.75rem;
+    border: none;
+}
+
+
+.execute_code {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.execute_code button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    min-width: 150px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    
+}
+
+.execute_code button:hover:not(:disabled) {
+    /* background: #f0f0f0; */
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+.execute_code button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #4a90e2;
+}
+
+.execute_code button:active:not(:disabled) {
+    background: #4a90e2;
+}
+
+.play_button {
+    font-size: 1rem;
+    transition: transform 0.15s ease;
+}
+
+.execute_code button:hover:not(:disabled) .play_button {
+    transform: scale(1.05);
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+
+.code-editor-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: rgba(0, 0, 0, 0.1);
+    min-height: 0;
+}
+
+.code-mirror {
+    flex: 1;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    background: transparent;
+    font-family: 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    /* max-height: 100%; */
+    max-height: 50vh;
+    overflow-y: auto;
+}
+.code-mirror-non-premium {
+    flex:1;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    background: transparent;
+    font-family: 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    overflow-y: auto;
+    max-height: 65vh;
+
+}
+
+.code-tab{
+    margin: 1rem;
+    padding: 1rem;
+    /* background: rgba(0, 0, 0, 0.1); */
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    min-width: 150px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+}   
+
+.code-tab-active{
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+.code-mirror .cm-editor,.code-mirror-non-premium .cm-editor {
+    height: 100% !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+}
+
+.code-mirror .cm-content,.code-mirror-non-premium .cm-content {
+    padding: 1.5rem !important;
+    min-height: 100% !important;
+}
+
+.code-mirror .cm-focused,.code-mirror-non-premium .cm-focused {
+    outline: none !important;
+}
+
+.code-mirror .cm-scroller,.code-mirror-non-premium .cm-scroller {
+    font-family: 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+}
+
+.code-mirror .cm-line,.code-mirror-non-premium .cm-line {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+}
+
+.code-mirror .cm-gutters,.code-mirror-non-premium .cm-gutters {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.code-mirror .cm-lineNumbers,.code-mirror-non-premium .cm-lineNumbers {
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.code-mirror .cm-activeLine,.code-mirror-non-premium .cm-activeLine {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.code-mirror .cm-activeLineGutter,.code-mirror-non-premium .cm-activeLineGutter {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.live-preview-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-top: 1rem;
+}
+
+.live-preview-title{
+    text-align: center;
+    margin: 0;
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+
+}
+.live-preview{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: auto;
+}
+
+
+.in_out_container {
+    display: flex;
+    height: 280px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.in_out_container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.input,
+.output {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.input {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.input::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.input h5,
+.output h5 {
+    margin: 0;
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.input h5::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #00ff88;
+}
+
+.output h5::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #4a90e2;
+}
+
+.input h5::after,
+.output h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.input textarea,
+.output textarea {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 1.5rem;
+    background: transparent;
+    color: #ffffff;
+    font-family: 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.input textarea::-webkit-scrollbar,
+.output textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.input textarea::-webkit-scrollbar-track,
+.output textarea::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.input textarea::-webkit-scrollbar-thumb,
+.output textarea::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+}
+
+.input textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+.input textarea:focus,
+.output textarea:focus {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.output textarea {
+    color: #e8e8e8;
+}
+
+.output textarea.success {
+    color: #00ff88;
+}
+
+.output textarea.error {
+    color: #ff6b6b;
+}
+
+.editor-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.editor-loading::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@media (max-width: 1200px) {
+    .editor-controls {
+        padding: 1.25rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    .control-section {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .execute_code {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .in_out_container {
+        flex-direction: column;
+        height: 400px;
+    }
+    .input {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .input::after {
+        display: none;
+    }
+    .control-section {
+        gap: 0.75rem;
+    }
+    .lang_selector,
+    .theme_selector {
+        min-width: 120px;
+        padding: 0.625rem 1rem;
+        font-size: 0.85rem;
+    }
+    .execute_code button {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
+        min-width: 130px;
+    }
+}
+
+@media (max-width: 640px) {
+    .editor-controls {
+        padding: 1rem;
+    }
+    .control-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .lang_selector,
+    .theme_selector {
+        width: 100%;
+        max-width: 200px;
+    }
+    .execute_code button {
+        width: 100%;
+        max-width: 200px;
+    }
+    .input h5,
+    .output h5 {
+        padding: 0.875rem 1rem;
+        font-size: 0.8rem;
+    }
+    .input textarea,
+    .output textarea {
+        padding: 1rem;
+        font-size: 12px;
+    }
+}
+
+/* Focus states for accessibility */
+.lang_selector:focus-visible,
+.theme_selector:focus-visible,
+.execute_code button:focus-visible,
+.input textarea:focus-visible,
+.output textarea:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}

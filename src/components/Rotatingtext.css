@@ -1,0 +1,21 @@
+.gemini-icon-landing {
+    font-size: 40px;
+    color: #4a90e2;
+    margin-right: 10px;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .gemini-icon-landing {
+        font-size: 24px;
+    }
+}
