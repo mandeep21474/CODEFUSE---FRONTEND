@@ -70,12 +70,12 @@ const Home = () => {
                 })
                 // console.log(response.data);
                 if(response.data.message==="Trial started"){
-                    console.log("trial started");
+                    // console.log("trial started");
                     settrial(true);
 
                 }
                 else{
-                    console.log(response.data);
+                    // console.log(response.data);
                 }
 
             } catch (error) {
