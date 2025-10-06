@@ -34,6 +34,15 @@ export default function LandingPage() {
     },[location])
      
   useEffect(() => {
+
+          window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Disable browser's scroll restoration
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
     // Initialize animations and interactions
     initNavigation()
     initHeroAnimations()
