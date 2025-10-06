@@ -399,7 +399,7 @@
     .welcome-message,
     .user-message {
         padding: 12px;
-        padding-left: 18px;
+        padding-left: 25px;
         margin-bottom: 20px;
     }
 
@@ -481,7 +481,7 @@
     .welcome-message,
     .user-message {
         padding: 10px;
-        padding-left: 15px;
+        padding-left: 25px;
         margin-bottom: 18px;
     }
 
@@ -574,7 +574,7 @@
     .welcome-message,
     .user-message {
         padding: 8px;
-        padding-left: 12px;
+        padding-left: 25px;
         margin-bottom: 15px;
         border-radius: 8px;
     }
