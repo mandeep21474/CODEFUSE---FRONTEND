@@ -74,8 +74,9 @@ const Home = () => {
                     settrial(true);
 
                 }
-                else{
+                else if(response.data.message==="Trial is active"){
                     // console.log(response.data);
+                    settrial(true);
                 }
 
             } catch (error) {
