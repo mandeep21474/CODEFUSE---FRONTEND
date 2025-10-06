@@ -1032,13 +1032,6 @@ SELECT * FROM users; `
                 }
 
             
-
-            {/* Loading overlay */}
-            {executing && (
-                <div className='editor-loading'>
-                    Executing code...
-                </div>
-            )}
         </div>
     )
 }
