@@ -34,6 +34,9 @@ export default function LandingPage() {
     },[location])
      
   useEffect(() => {
+          if(location.hash==='#plans'&&planref.current  ){
+        return;
+    }
 
           window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
