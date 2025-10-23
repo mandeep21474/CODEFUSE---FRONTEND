@@ -75,7 +75,9 @@ console.log(message);`
         Development:{
             name:'Development',
             extension: html(),
-            sample: `<!DOCTYPE html>
+            sample: `<!-- You can leave adding stylesheet and script in body or head tag since they are connected internally. -->
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -465,9 +467,21 @@ SELECT * FROM users; `
             
             let finalHTML = htmlCode;
             finalHTML = finalHTML.replace("</body>",`<style>${cssCode}</style></body>`);
-            finalHTML = finalHTML.replace("</body>",`<script>${jsCode}</script></body>`);
+           
+            const jscode = `<script>
+      (() => {
+        try {
+          ${jsCode}
+        } catch (e) {
+          console.error('Error in injected JS:', e);
+        }
+      })();
+    </script>`
+
+    finalHTML = finalHTML.replace("</body>",`${jscode}</body>`);
             
             try{
+            iframe.srcdoc = ''; 
             iframeDoc.open();
             iframeDoc.write(finalHTML);
             iframeDoc.close();
@@ -1032,6 +1046,8 @@ SELECT * FROM users; `
                 }
 
             
+
+      
         </div>
     )
 }
